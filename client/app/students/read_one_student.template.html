@@ -1,0 +1,47 @@
+<md-dialog>
+    <form ng-cloak>
+        <!-- dialog box title -->
+        <md-toolbar>
+            <div class="md-toolbar-tools">
+                <h2>Details about Student</h2>
+            </div>
+        </md-toolbar>
+ 
+        <md-dialog-content>
+            <div class="md-dialog-content">
+ 
+                <!-- display student information -->
+                <md-input-container class="md-block">
+                    <label>ID</label>
+                    <input ng-model="id" disabled>
+                </md-input-container>
+                
+                <md-input-container class="md-block">
+                    <label>Firstname</label>
+                    <input ng-model="firstname" disabled>
+                </md-input-container>
+ 
+                <md-input-container class="md-block">
+                    <label>Lastname</label>
+                    <input ng-model="lastname" disabled>
+                </md-input-container>
+ 
+                <md-input-container class="md-block">
+                    <label>Grade</label>
+                    <input ng-model="grade" disabled>
+                </md-input-container>
+                
+                <md-input-container class="md-block">
+                    <label>Birth Date</label>
+                    <input ng-model="birth_date" disabled>
+                </md-input-container>
+ 
+            </div>
+        </md-dialog-content>
+ 
+        <!-- button to close the dialog box -->
+        <md-dialog-actions layout="row">
+            <md-button ng-click="cancel()">Cancel</md-button>
+        </md-dialog-actions>
+    </form>
+</md-dialog>

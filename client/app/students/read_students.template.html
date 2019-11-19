@@ -1,0 +1,109 @@
+<div layout="row" ng-controller="studentsController" ng-cloak>
+    <div flex="10"></div>
+ 
+    <div flex="80" >
+ 
+        <!-- page title & 'create student' button -->
+        <md-toolbar class="md-hue-2">
+            <div class="md-toolbar-tools">
+                <!-- page title -->
+                <div flex md-truncate>
+                    <h3 class="md-headline" align="center">Students</h3>
+                </div>
+                <!-- 'create' student button will be here -->
+                <md-button class="md-raised" ng-click="showCreateStudentForm()">Create</md-button>
+            </div>
+        </md-toolbar>
+ 
+        <!-- used for searching products in api -->
+        <!--<md-input-container class="md-block m-b-0px">
+            <form ng-submit="searchStudents()">
+                <label>Search students by ID, Firstname or Lastname...</label>
+                <input ng-init="student_search_keywords=''" ng-model="student_search_keywords">
+            </form>
+        </md-input-container>-->
+        
+        <div ng-init="readStudents()">
+            <div>
+                <table class="w3-table-all">
+                    <tr>
+                        <th ng-click="sortBy('lastname')">Lastname<span class="sortorder" ng-show="propertyName === 'lastname'" ng-class="{reverse: reverse}"></span></th>
+                        <th ng-click="sortBy('firstname')">Firstname<span class="sortorder" ng-show="propertyName === 'firstname'" ng-class="{reverse: reverse}"></span></th>
+                        <th ng-click="sortBy('grade')">Grade<span class="sortorder" ng-show="propertyName === 'grade'" ng-class="{reverse: reverse}"></span></th>
+                        <th></th>
+                    </tr>
+                    <tr>
+                        <th>
+                            <input type="text" ng-model="f1.lastname" id="filter-input">
+                            <button class="clear-filter-btn" ng-show="f1.lastname" ng-click="f1.lastname=undefined">x</button>
+                        </th>
+                        <th>
+                            <input type="text" ng-model="f2.firstname" id="filter-input">
+                            <button class="clear-filter-btn" ng-show="f2.firstname" ng-click="f2.firstname=undefined">x</button>
+                        </th>
+                        <th>
+                            <input type="number" ng-model="f3.grade" placeholder="x0.1" step="0.1" min="0" id="half-filter-input"><span class="validity"></span>
+                            <button class="clear-filter-btn" ng-show="f3.grade!=null" ng-click="f3.grade=null">x</button>
+                        </th>
+                        <th class="w3-center">Actions</th>
+                    </tr>
+                    <tr class="w3-hover-light-blue" ng-repeat="row in  students | orderBy:propertyName:reverse | limitTo : itemsPerPage: beginIndex | filter:f1:startsWith | filter:f2:startsWith | filter:f3:greaterThan">
+                        <td>{{ row.lastname }}</td>
+                        <td>{{ row.firstname }}</td>
+                        <td>{{ row.grade }}</td>
+                        <td>
+                            <div layout="horizontal">
+                                <md-button class="md-btn" ng-click="readOneStudent(row.id)" title="See Details">
+                                    <md-icon md-svg-src="app/assets/icons/read-more.svg"></md-icon>
+                                </md-button>
+                                <md-button class="md-btn" ng-click="showUpdateStudentForm(row.id)" title="Edit">
+                                    <md-icon md-svg-src="app/assets/icons/edit.svg"></md-icon>
+                                </md-button>
+                                <md-button  class="md-btn" ng-click="confirmDeleteStudent($event, row.id)" title="Delete">
+                                    <md-icon md-svg-src="app/assets/icons/recycle-bin.svg"></md-icon>
+                                </md-button>
+                            </div>
+                        </td>
+                    </tr> 
+                </table>
+                
+                <div>
+                    <div id="items-per-page">
+                        <span>Items per Page: </span>
+                        <select ng-model="itemsPerPage" ng-options="x for x in [undefined,5,10,15,20,25,50,100]" ng-change="pagConf()"></select>
+                    </div>
+                    <div id="nav-pagination" ng-show="itemsPerPage">
+                        <button ng-disabled="currentPage==1" ng-click="firstPage()"> << </button>
+                        <button ng-disabled="currentPage==1" ng-click="previousPage()"> < </button>
+                        <span> Page {{currentPage}} of {{totalPages}}</span>
+                        <button ng-disabled="currentPage==lastPage" ng-click="nextPage()"> > </button>
+                        <button ng-disabled="currentPage==lastPage" ng-click="finalPage()"> >> </button>
+                    </div>
+                </div>
+                
+                <!--<table ng-table="tableParams"  class="w3-table-all" show-filter="true">
+                    <tr class="w3-hover-light-blue" ng-repeat="row in $data">
+                        <td title="'Lastname'" filter="{ lastname: 'text'}" sortable="'lastname'">{{row.lastname}}</td>
+                        <td title="'Firstname'" filter="{ firstname: 'text'}" >{{row.firstname}}</td>
+                        <td title="'Grade'" filter="{ grade: 'number'}" sortable="'grade'">{{row.grade}}</td>
+                        <td title="'Actions'" class="w3-center">
+                            <div layout="horizontal">
+                                <md-button class="md-btn" ng-click="readOneStudent(row.id)" title="See Details">
+                                    <md-icon md-svg-src="app/assets/icons/read-more.svg"></md-icon>
+                                </md-button>
+                                <md-button class="md-btn" ng-click="showUpdateStudentForm(row.id)" title="Edit">
+                                    <md-icon md-svg-src="app/assets/icons/edit.svg"></md-icon>
+                                </md-button>
+                                <md-button  class="md-btn" ng-click="confirmDeleteStudent($event, row.id)" title="Delete">
+                                    <md-icon md-svg-src="app/assets/icons/recycle-bin.svg"></md-icon>
+                                </md-button>
+                            </div>
+                        </td>
+                    </tr>
+                </table>-->
+            </div>
+        </div>
+    </div>
+ 
+    <div flex="10"></div>
+</div> <!-- end row -->

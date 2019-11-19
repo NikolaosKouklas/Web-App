@@ -1,0 +1,71 @@
+<md-dialog>
+    <form name="studentForm" ng-cloak>
+         
+        <md-toolbar>
+            <div class="md-toolbar-tools">
+                <h2>Update Student</h2>
+            </div>
+        </md-toolbar>
+ 
+        <md-dialog-content>
+            <div class="md-dialog-content">
+            
+                    <md-input-container class="md-block">
+                        <label>ID</label>
+                        <input ng-model="id" disabled>
+                    </md-input-container>
+                
+                    <md-input-container class="md-block">
+                        <label>Firstname</label>
+                        <input type="text" name="firstname" ng-model="firstname" ng-pattern="/^[a-zA-Z]+$/" ng-maxlength="50" required>
+                        <div ng-messages="studentForm.firstname.$error" ng-show="studentForm.firstname.$dirty || studentForm.firstname.$touched ">
+                            <div ng-message="required">This field is required</div>
+                            <div ng-message="maxlength">This field can be at most 50 characters long</div>
+                            <div ng-message="pattern">This field must contain only letters</div>
+                        </div>
+                    </md-input-container>
+                
+                    
+                    <md-input-container class="md-block">
+                        <label>Lastname</label>
+                        <input type="text" name="lastname" ng-model="lastname" ng-pattern="/^[a-zA-Z]+$/" ng-maxlength="100" required>
+                        <div ng-messages="studentForm.lastname.$error" ng-show="studentForm.lastname.$dirty || studentForm.lastname.$touched">
+                            <div ng-message="required">This field is required</div>
+                            <div ng-message="maxlength">This field can be at most 100 characters long</div>
+                            <div ng-message="pattern">This field must contain only letters</div>
+                        </div>
+                    </md-input-container>
+     
+                    <md-input-container class="md-block">
+                        <label>Grade</label>
+                        <input type="number" step="0.1" min="0" max="20" name="grade" ng-model="grade" required>
+                        <div ng-messages="studentForm.grade.$error" ng-show="studentForm.grade.$dirty || studentForm.grade.$touched">
+                            <div ng-message="required">This field is required</div>
+                            <div ng-message="min">Minimum grade is 0</div>
+                            <div ng-message="max">Maximum grade is 20</div>
+                            <div ng-message="step">This field can't be a float number with more than one decimal point</div>
+                            <div ng-message="number">This field must be an integer or float number (with one decimal point) between 0 and 20</div>
+                        </div>
+                    </md-input-container>
+                    
+                    <md-input-container class="md-block">
+                        <label>Birth Date</label>
+                        <!--  ng-readonly="true" -->
+                        <md-datepicker md-open-on-focus ng-keydown="$event.preventDefault()" name="birth_date" ng-model="birth_date" md-placeholder="Enter Date" md-hide-icons="calendar" md-current-view="year" ng-required="true" md-min-date="minDate" md-max-date="maxDate"></md-datepicker>
+                        <div ng-messages="studentForm.birth_date.$error" ng-show="studentForm.birth_date.$dirty || studentForm.birth_date.$touched">
+                            <div ng-message="required">This field is required</div>
+                            <div ng-message="valid">Valid date format is D/M/YYYY</div>
+                            <div ng-message="maxdate">Student must be at least 18 years old</div>
+                            <div ng-message="mindate">Student can't be over 65 years old</div>
+                        </div>
+                    </md-input-container>
+                    
+            </div>
+        </md-dialog-content>
+ 
+        <md-dialog-actions layout="row">
+            <md-button ng-click="cancel()">Cancel</md-button>
+            <md-button ng-click="updateStudent()" ng-disabled="studentForm.$invalid" class="md-primary">Update</md-button>
+        </md-dialog-actions>
+    </form>
+</md-dialog>

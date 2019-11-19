@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+ 
+    <title>Read Students</title>
+    
+    <!-- angular material style sheet -->
+    <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.19/angular-material.min.css">
+ 
+    <!-- roboto font 
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,400italic">-->
+ 
+    <!-- include custom CSS -->
+    <link rel="stylesheet" href="app/assets/css/custom.css"/>
+    
+    <!-- w3.css for table -->
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    
+    <!-- include angular js -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+ 
+    <!-- needed for angular material -->
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-animate.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-aria.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-messages.min.js"></script>
+ 
+    <!-- angular material Library -->
+    <script src="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.19/angular-material.min.js"></script>
+    
+    <!-- include moment js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.2/moment.min.js"></script>
+    
+    <!--  for ng.table -->
+    <!--<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/ng-table/bundles/ng-table.min.css">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.2/angular.js"></script>
+    <script src="https://unpkg.com/ng-table/bundles/ng-table.min.js"></script>-->
+    
+    <!-- app -->
+    <script src="app/app.js"></script>
+     
+    <!-- students controller -->
+    <script src="app/students/students.controller.js"></script>
+     
+    <!-- students factory -->
+    <script src="app/students/students.factory.js"></script>
+    
+    <!-- students datepicker configuration -->
+    <script src="app/students/students.config.js"></script>
+
+</head>
+ 
+<body>
+
+    <!-- container of our app -->
+    <div class="container" ng-app="myApp">
+     
+        <!-- read students template -->
+        <ng-include src="'app/students/read_students.template.html'"> </ng-include>
+     
+    </div> <!-- end container -->
+
+</body>
+</html>
